@@ -35,3 +35,4 @@ def test_threading():
   assert_equal(
     _ | 2 | inc | (pow, 2) | _, 8
   )
+  
