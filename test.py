@@ -1,3 +1,4 @@
+from math import pow
 from nose.tools import assert_equal
 
 from toolz.curried import map
@@ -27,3 +28,10 @@ def test_creator_and_destroyer():
       [(0, 1), (1, 4), (2, 9)]
   )
 
+
+def test_threading():
+  inc = lambda x: x + 1
+  # Threading occurs in a thread-last manner
+  assert_equal(
+    _ | 2 | inc | (pow, 2) | _, 8
+  )
